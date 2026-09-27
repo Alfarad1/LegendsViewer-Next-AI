@@ -20,6 +20,32 @@
   ![Family Tree](https://i.imgur.com/fwDbczfl.png "Family Tree")
 - Load large Dwarf Fortress **XML exports** quickly and efficiently using **XmlReader**
 
+## Run with Docker
+
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) and Docker Compose
+
+### Start the app
+
+```bash
+docker compose up --build
+```
+
+Open **http://localhost:15422** in your browser (API listens on port **15421**).
+
+### Load legends exports
+
+By default the `./data` folder is mounted read-only at `/data` inside the container. Put your Dwarf Fortress legends XML files there, then browse to `/data` in the app's file picker.
+
+To use a different folder on the host:
+
+```bash
+LEGENDS_PATH=/path/to/your/df/exports docker compose up --build
+```
+
+Bookmarks persist in a Docker volume across restarts.
+
 ## Installation for Development
 
 ### Prerequisites

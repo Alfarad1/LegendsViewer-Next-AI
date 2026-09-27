@@ -1,0 +1,15 @@
+services:
+  legendsviewer:
+    build: .
+    ports:
+      - "15421:15421"
+      - "15422:15422"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+    volumes:
+      - ${LEGENDS_PATH:-./data}:/data:ro
+      - lv-bookmarks:/home/app/.config/LegendsViewer
+    restart: unless-stopped
+
+volumes:
+  lv-bookmarks:

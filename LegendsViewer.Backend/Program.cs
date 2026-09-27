@@ -36,7 +36,7 @@ public class Program
             serverOptions.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(5);
             serverOptions.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(5);
         })
-        .UseUrls(BackendUrl);
+        .UseUrls($"http://*:{BackendPort}");
 
         builder.Services.AddSingleton<IWorld, World>();
         builder.Services.AddSingleton<IWorldMapImageGenerator, WorldMapImageGenerator>();
@@ -78,8 +78,13 @@ public class Program
 
         _ = WebAppStaticServer.RunAsync();
 
+        var runningInContainer = string.Equals(
+            Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER"),
+            "true",
+            StringComparison.OrdinalIgnoreCase);
+
         var openBrowser = Task.Delay(0);
-        if (!app.Environment.IsDevelopment())
+        if (!app.Environment.IsDevelopment() && !runningInContainer)
         {
             openBrowser = WebAppStaticServer.OpenPageInBrowserAsync();
         }

@@ -487,3 +487,7 @@ $RECYCLE.BIN/
 .team/
 
 *.tsbuildinfo
+
+# Docker-mounted DF legends exports (see docker-compose.yml)
+/data/*
+!/data/.gitkeep
