@@ -1,0 +1,1 @@
+"""LegendsViewer AI chat service."""

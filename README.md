@@ -32,8 +32,15 @@
 docker compose up --build
 ```
 
-Open **http://localhost:15422** in your browser (API listens on port **15421**).
+Open **http://localhost:15422** in your browser (API listens on port **15421**, AI chat service on **15423**).
 
+Set an OpenAI-compatible key before starting if you want AI Chat:
+
+```bash
+OPENAI_API_KEY=sk-... docker compose up --build
+```
+
+For local Ollama, override `OPENAI_BASE_URL` / `OPENAI_MODEL` (see `LegendsViewer.AI/.env.example`).
 ### Load legends exports
 
 By default the `./data` folder is mounted read-only at `/data` inside the container. Put your Dwarf Fortress legends XML files there, then browse to `/data` in the app's file picker.

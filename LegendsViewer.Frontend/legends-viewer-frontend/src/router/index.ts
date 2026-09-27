@@ -5,6 +5,7 @@ const routes = [
   { path: '/world', name: 'World', component: () => import('../views/World.vue') },
   { path: '/records', name: 'World Records', component: () => import('../views/WorldRecords.vue') },
   { path: '/map', name: 'Map', component: () => import('../views/Map.vue') },
+  { path: '/chat', name: 'AI Chat', component: () => import('../views/Chat.vue') },
   { path: '/site', name: 'Sites', component: () => import('../views/Sites.vue') },
   { path: '/site/:id', name: 'Site', component: () => import('../views/Site.vue') },
   { path: '/region', name: 'Regions', component: () => import('../views/Regions.vue') },

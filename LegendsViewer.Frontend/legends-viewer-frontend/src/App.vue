@@ -121,6 +121,7 @@ const ritualItems = [
             :disabled="bookmarkStore?.isLoaded == false" />
           <v-list-item prepend-icon="mdi-map-search-outline" title="Map" to="/map" :active-class="'v-list-item--active'"
             :disabled="bookmarkStore?.isLoaded == false" />
+          <v-list-item prepend-icon="mdi-robot-outline" title="AI Chat" to="/chat" :active-class="'v-list-item--active'" />
           <v-list-item prepend-icon="mdi-timelapse" title="Eras" to="/era" :active-class="'v-list-item--active'"
             :disabled="bookmarkStore?.isLoaded == false" />
           <v-list-group value="Society">

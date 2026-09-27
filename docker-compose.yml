@@ -11,5 +11,23 @@ services:
       - lv-bookmarks:/home/app/.config/LegendsViewer
     restart: unless-stopped
 
+  ai:
+    build: ./LegendsViewer.AI
+    # Host network so local Ollama on 127.0.0.1:11434 is reachable (Linux).
+    # Published ports are unused in this mode; the process still binds :15423 on the host.
+    network_mode: host
+    # Router DNS (192.168.50.1) often blocks UDP/53 from containers; use public resolvers.
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+    env_file:
+      - ./LegendsViewer.AI/.env
+    environment:
+      # Reach the published legendsviewer ports on the host
+      LV_API_BASE_URL: http://127.0.0.1:15421
+    depends_on:
+      - legendsviewer
+    restart: unless-stopped
+
 volumes:
   lv-bookmarks:
